@@ -1,0 +1,33 @@
+---
+sudo: false
+language: C
+
+install:
+  - brew install sdl
+  - brew install sdl2
+  - brew install sdl_ttf
+  - brew install sdl2_ttf
+  - brew install sdl_image
+  - brew install sdl2_image
+  - brew install sdl_mixer
+  - brew install sdl2_mixer
+
+os:
+  - osx
+
+env:
+  - BUILD=native CC=clang MODE=release
+  - BUILD=native CC=clang MODE=debug
+  - BUILD=native CC=gcc MODE=release
+  - BUILD=native CC=gcc MODE=debug
+
+env:
+  - ARCH=x86_64
+  - ARCH=i686
+
+script:
+  - make
+
+branches:
+  only:
+    - master
